@@ -1,0 +1,35 @@
+name: brief-guard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate-brief:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Task brief must exist and be intact
+        run: |
+          set -eu
+          fail() { echo "::error::$1"; exit 1; }
+          for f in README.md AGENT-GOALS.md AGENTS.md CHANGELOG.md LICENSE; do
+            [ -s "$f" ] || fail "required file missing or empty: $f"
+          done
+          grep -q "Standing constraints" AGENT-GOALS.md \
+            || fail "AGENT-GOALS.md lost its standing-constraints section"
+          grep -q "Goal 0 — Build gates" AGENT-GOALS.md \
+            || fail "AGENT-GOALS.md lost its Goal 0 build gates"
+          grep -q "read-only" README.md \
+            || fail "README lost its read-only posture statement"
+          grep -q "MIT" LICENSE || fail "LICENSE is not MIT"
+          echo "Brief intact: README, AGENT-GOALS, AGENTS, CHANGELOG, LICENSE all present and structured."
+      - name: Markdown sanity (no broken internal links)
+        run: |
+          set -eu
+          broken=0
+          for link in $(grep -oh '](\([A-Za-z0-9._/-]*\))' *.md | sed 's/](\(.*\))/\1/' | sort -u | grep -v '^http' | grep -v '^#'); do
+            [ -e "$link" ] || { echo "::warning::broken internal link: $link"; broken=1; }
+          done
+          [ "$broken" -eq 0 ] && echo "All internal links resolve."
