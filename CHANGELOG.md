@@ -7,6 +7,16 @@ AGENT-GOALS.md standing constraints.
 
 ## [Unreleased]
 
+### Changed
+- Goal 0 resolved (2026-10-04): Gate 1 (AlayaCare API depth) PASSED —
+  397 documented endpoints incl. EVV records, visit/task/schedule CRUD,
+  and the write paths the approval loop needs. Gate 2 (absorption)
+  FIRES partially — AlayaCare announced agentic AI / AI Form Assistant /
+  Clinical Agent (Mar–May 2026); absorption clock now runs on both
+  platforms; cross-platform adapter promoted to a day-one design
+  requirement. Full endpoint inventory: `docs/gate-log.md`. No version
+  bump (docs).
+
 ## [0.0.1] — 2026-09-30
 
 ### Added

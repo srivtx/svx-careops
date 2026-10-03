@@ -10,10 +10,10 @@ approves. The agency keeps its platform, keeps its audit trail, and
 stops paying for invisible labor.
 
 > **Status: pre-build, verified open with an absorption clock
-> (2026-09-30).** This repository is a complete, self-contained work
-> order. No product code exists yet. Read
-> [`AGENT-GOALS.md`](AGENT-GOALS.md) first — it is the task brief; this
-> README is the context.
+> running on both major platforms (re-verified 2026-10-04).** This
+> repository is a complete, self-contained work order. No product code
+> exists yet. Read [`AGENT-GOALS.md`](AGENT-GOALS.md) first — it is the
+> task brief; this README is the context.
 
 ## Why this is necessary
 
@@ -85,23 +85,28 @@ possible validation of the demand.**
 ## Verification status and build gates
 
 The gap was **OPEN — narrowing, absorption clock started — at
-medium-high confidence** as of 2026-09-30 (V2). The strategic facts an
-incoming agent must internalize:
+medium-high confidence** as of 2026-09-30 (V2), and **re-verified
+2026-10-04 with the Goal-0 gates resolved** (see
+[`docs/gate-log.md`](docs/gate-log.md)):
 
-- **The #1 threat is the incumbent's own roadmap:** AxisCare announced
-  "AI innovations coming to AxisCare in 2026, including new
-  automation, scheduling intelligence and workflow enhancements"
-  (axiscare.com, Jun 15 2026). This is why the first ship is
-  **AlayaCare**, where the BPO/VA workaround market is thickest and no
-  in-house AI absorption signal has surfaced — not AxisCare, whose API
-  is actually the best-evidenced but whose vendor is racing us there.
-- **sagecare.ai occupies intake** (Mar 25 2026). We do not build
-  intake. EVV-exception + billing-note drafting is the open lane.
-- **Gates before code:** (1) one verification pass on AlayaCare API
-  endpoint depth (developer.alayacare.com — read the docs directly,
-  not web search; the endpoint-level inventory is still unverified);
-  (2) confirm no AlayaCare-native AI back-office announcement has
-  landed since 2026-09-30.
+- **The API gate passed decisively:** developer.alayacare.com
+  documents **397 endpoints** — EVV records and visit-verification,
+  full visit/task/schedule CRUD, caregiver records, progress notes,
+  and billing items — including the write paths the approval loop
+  needs (`post_visits-{id}-notes`, `patch_visits-{id}`,
+  `put_visits-lock`).
+- **The absorption clock now runs on BOTH platforms:** AxisCare
+  announced in-house AI (Jun 15 2026), and AlayaCare announced agentic
+  AI, an AI Form Assistant, and a Clinical Agent (Mar–May 2026,
+  "reclaim 80% of time and costs") — absorbing the adjacent
+  clinical-forms layer. The EVV-exception + billing-note lane is not
+  confirmed absorbed. **The strategic core re-frames to the slice no
+  incumbent can copy: cross-platform neutrality** — one back-office
+  agent across AlayaCare/AxisCare/WellSky, with the platform adapter
+  as a day-one design requirement.
+- First ship unchanged in kind (AlayaCare, EVV-exception triage),
+  sharpened in positioning (neutrality + audit trail, not raw
+  automation claims).
 
 Full evidence: [V2 report](https://github.com/srivtx/svx-research/blob/main/research/track-reports/V2-row14-careops-killsearch.md),
 [R9 report](https://github.com/srivtx/svx-research/blob/main/research/track-reports/R9-elder-care-ops.md),

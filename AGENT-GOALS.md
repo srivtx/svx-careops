@@ -46,7 +46,22 @@ shipped it, re-run the gates if the goal says so, do the work, add a
 
 ---
 
-## Goal 0 — Build gates (MUST run before any code)
+## Goal 0 — Build gates (RESOLVED 2026-10-04 — see `docs/gate-log.md`)
+
+**Outcome: Gate 1 (API depth) PASSED decisively — 397 documented
+endpoints at developer.alayacare.com, all five read categories plus
+the write paths (`post_visits-{id}-notes`, `patch_visits-{id}`,
+`put_visits-lock`). Gate 2 (absorption) FIRES partially — AlayaCare
+announced agentic AI / AI Form Assistant / Clinical Agent (Mar–May
+2026, secondary sources), absorbing the adjacent clinical-forms
+layer; the EVV-exception + billing-note lane is not confirmed
+absorbed, but the clock runs on both platforms now. **Goal 1
+proceeds, re-framed: the cross-platform adapter layer is a
+first-class design requirement from day one, and all positioning
+acknowledges the absorption clock.** Full evidence and endpoint
+inventory: [`docs/gate-log.md`](docs/gate-log.md).
+
+**Original work order (kept for the record):**
 
 **Why this goal exists.** The gap is OPEN at medium-high confidence,
 not high, and it has an **absorption clock** — the incumbent's own 2026
@@ -209,9 +224,13 @@ review; no version bump (docs).
 
 ## Goal 4 — Smaller improvements (pick up anytime)
 
-- AxisCare connector (second platform — the best-evidenced API;
+- ~~AxisCare connector (second platform — the best-evidenced API;
    build only after the AxisCare absorption status is re-checked; its
-   vendor is racing its own AI roadmap).
+   vendor is racing its own AI roadmap).~~ **PROMOTED to a Goal 1-2
+design requirement by the 2026-10-04 gate outcome** — the platform
+adapter layer is now first-class (cross-platform neutrality is the
+slice no incumbent will copy); the AxisCare adapter itself still
+lands second, after the absorption re-check.
 - WellSky PC feasibility note (STILL-UNVERIFIED after two passes —
    read the vendor's API docs directly before any connector work).
 - Exception-digest email (weekly owner summary — the "observation
@@ -224,7 +243,9 @@ review; no version bump (docs).
 
 ## Re-verify triggers (any of these → re-run Goal 0 before further work)
 
-- AlayaCare ships native AI back-office / EVV-exception features.
+- AlayaCare ships native AI back-office / EVV-exception features
+  (as of 2026-10-04: agentic AI, Form Assistant, Clinical Agent
+  announced Mar–May 2026 — the adjacent layer; see `docs/gate-log.md`).
 - AxisCare's 2026 AI automation reaches GA on scheduling/exception
   workflows.
 - sagecare.ai (or any overlay) expands from intake into EVV/billing.
